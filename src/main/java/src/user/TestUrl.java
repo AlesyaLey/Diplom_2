@@ -10,7 +10,7 @@ import io.restassured.specification.RequestSpecification;
 
 public interface TestUrl {
 
-    String dataForTest = "src/test/DataForTest";
+    String dataForTest = "/home/lesya/IdeaProjects/Diplom/Diplom_2/src/test/java/src/DataForTest";
 
     Filter requestFilter = new RequestLoggingFilter();
     Filter responseFiler = new ResponseLoggingFilter();
@@ -38,4 +38,5 @@ public interface TestUrl {
     String resetPasswordRequestUrl = "/password-reset";
     String resetPasswordConfirmationUrl = "/password-reset/reset";
     String refreshTokenUrl = "/auth/token";
+
 }

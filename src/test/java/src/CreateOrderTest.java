@@ -3,11 +3,13 @@ package src;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
+import src.common.OrderSteps;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 
 @DisplayName("Создание заказа")
-public class CreateOrderTest extends OrderSteps {
+public class CreateOrderTest  extends OrderSteps {
+
 
     @Test
 

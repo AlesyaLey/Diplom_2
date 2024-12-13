@@ -5,7 +5,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 import java.io.*;
-public class UserApiTest implements TestUrl {
+public class UserApi implements TestUrl {
 
     public RequestSpecification request(User user, String accessToken) {
         return RestAssured
@@ -28,6 +28,7 @@ public class UserApiTest implements TestUrl {
                 .spec(spec)
                 .header("Authorization", accessToken);
     }
+
     public Response registerUser(User user) {
         Response response = request(user).post(registerUserUrl);
         if (String.valueOf(response.statusCode()).equals("200")) {
@@ -45,6 +46,7 @@ public class UserApiTest implements TestUrl {
         }
         return response;
     }
+
     public void deleteUser(String accessToken) {
         request(accessToken).delete(deleteUserUrl);
     }

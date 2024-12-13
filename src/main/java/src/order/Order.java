@@ -1,5 +1,9 @@
 package src.order;
+import lombok.Setter;
+import lombok.Getter;
 
+@Getter
+@Setter
 public class Order {
     private String[] ingredients;
 

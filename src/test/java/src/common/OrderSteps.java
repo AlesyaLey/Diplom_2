@@ -1,10 +1,10 @@
-package src;
+package src.common;
 
 import src.order.Order;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
-public class OrderSteps extends DataForTest{
+public class OrderSteps extends BaseTestData {
 
     @Step("Create order")
     public Response createOrder(Order order) {
@@ -25,4 +25,5 @@ public class OrderSteps extends DataForTest{
     public Response getOrders() {
         return orderApi.getUserOrders();
     }
+
 }

@@ -3,13 +3,14 @@ package src;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
+import src.common.OrderSteps;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.empty;
 
 @DisplayName("Получение заказов конкретного пользователя")
 
-public class GetUserOrderTest extends OrderSteps{
+public class GetUserOrderTest extends OrderSteps {
 
     @Test
 

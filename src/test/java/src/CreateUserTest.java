@@ -3,11 +3,13 @@ package src;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
+import src.common.BaseTestData;
+import src.common.UserSteps;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 
 @DisplayName("Создание пользователя")
-public class CreateUserTest extends UserSteps{
+public class CreateUserTest extends UserSteps {
 
     @Test
 

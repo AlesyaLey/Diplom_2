@@ -1,10 +1,10 @@
-package src;
+package src.common;
 
 import src.user.User;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
-public class UserSteps extends DataForTest {
+public class UserSteps extends BaseTestData {
 
     @Step("Create user")
     public Response createUser(User user) {
