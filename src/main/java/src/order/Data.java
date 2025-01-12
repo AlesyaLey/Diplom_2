@@ -1,8 +1,7 @@
-package src.common;
+package src.order;
 
 import lombok.Getter;
 import lombok.Setter;
-import src.order.Ingredient;
 
 import java.util.List;
 

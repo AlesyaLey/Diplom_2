@@ -3,9 +3,11 @@ package src.user;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-
 import java.io.*;
-public class UserApi implements TestUrl {
+
+import static src.user.TestUrl.*;
+//public class UserApi implements TestUrl {
+public class UserApi {
 
     public RequestSpecification request(User user, String accessToken) {
         return RestAssured

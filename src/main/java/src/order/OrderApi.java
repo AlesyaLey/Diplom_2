@@ -3,11 +3,12 @@ package src.order;
 //import io.restassured.RestAssured.g;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import src.user.TestUrl;
 
 import static io.restassured.RestAssured.given;
+import static src.user.TestUrl.*;
 
-public class OrderApi implements TestUrl {
+//public class OrderApi implements TestUrl {
+public class OrderApi{
     public RequestSpecification request(Order order, String accessToken) {
         return given()
                 .spec(spec)
@@ -30,6 +31,13 @@ public class OrderApi implements TestUrl {
     public RequestSpecification getUsersOrders() {
         return given()
                 .spec(spec);
+    }
+    public Data takeData(){
+        return given()
+                .baseUri(baseUrl)
+                .basePath(basePathApi)
+                .get(getIngredientsUrl)
+                .as(Data.class);
     }
 
     public Response createOrder(Order order) {

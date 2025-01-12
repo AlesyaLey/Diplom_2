@@ -10,15 +10,17 @@ import io.restassured.specification.RequestSpecification;
 
 public interface TestUrl {
 
-    String dataForTest = "/home/lesya/IdeaProjects/Diplom/Diplom_2/src/test/java/src/DataForTest";
+    String dataForTest = "DataForTest";
 
     Filter requestFilter = new RequestLoggingFilter();
     Filter responseFiler = new ResponseLoggingFilter();
     Filter allureLogger = new AllureRestAssured();
+    String baseUrl = "https://stellarburgers.nomoreparties.site";
+    String basePathApi = "/api";
 
     RequestSpecification spec = RestAssured.given()
-            .baseUri("https://stellarburgers.nomoreparties.site")
-            .basePath("/api")
+            .baseUri(baseUrl)
+            .basePath(basePathApi)
             .contentType(ContentType.JSON)
             .accept(ContentType.JSON)
             .filters(requestFilter, responseFiler, allureLogger);
