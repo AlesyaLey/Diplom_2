@@ -18,6 +18,12 @@ public class LoginUserTest extends UserSteps {
         createUser(validUser);
         loginUser(validUser).then().statusCode(200).assertThat()
                 .body("success", equalTo(true));
+
+        String token = loginUser(validUser).then().extract().body().path("accessToken").toString();
+        System.out.println(" token hjfbjdf  "+token);
+
+        String ttttoken = getToken(loginUser(validUser));
+        System.out.println(" Получен токен через запрос  " +ttttoken);
     }
 
     @Test
@@ -25,7 +31,7 @@ public class LoginUserTest extends UserSteps {
     @DisplayName("Логин с неверным логином")
     @Description("Провальный вход под незарегистрированным пользователем")
     public void logInUnregisteredUserTest() {
-        loginUser(validUser).then().statusCode(401).assertThat()
+        loginUser(invalidUser).then().statusCode(401).assertThat()
                 .body("message", equalTo(failedAuthorization));
     }
 

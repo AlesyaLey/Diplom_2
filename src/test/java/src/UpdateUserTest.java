@@ -16,17 +16,18 @@ public class UpdateUserTest extends UserSteps {
     @Description("Регистрация пользователя и смена пароля")
     public void updateUserPasswordTest() {
 
-        createUser(validUser);
+        String token = createUser(validUser).then().extract().body().path("accessToken").toString();
         validUser.setPassword("changed_" + validUser.getPassword());
-        updateUser(validUser).then().statusCode(200).assertThat()
-                .body("success", equalTo(true));
+        System.out.println("Исправленный пароль " + validUser.getPassword());
+        updateUser(validUser,token).then().statusCode(200).assertThat().body("success", equalTo(true));
+
 
         validUser.setEmail("changed_" + validUser.getEmail());
-        updateUser(validUser).then().statusCode(200).assertThat()
+        updateUser(validUser,token).then().statusCode(200).assertThat()
                 .body("success", equalTo(true));
 
         validUser.setName("changed_" + validUser.getName());
-        updateUser(validUser).then().statusCode(200).assertThat()
+        updateUser(validUser,token).then().statusCode(200).assertThat()
                 .body("success", equalTo(true));
     }
 

@@ -31,20 +31,22 @@ public class UserApi {
                 .header("Authorization", accessToken);
     }
 
+
+
     public Response registerUser(User user) {
         Response response = request(user).post(registerUserUrl);
         if (String.valueOf(response.statusCode()).equals("200")) {
             String accessToken = response.then().extract().body().path("accessToken").toString();
-            storeData(accessToken);
+           // storeData(accessToken);
         }
         return response;
     }
 
     public Response loginUser(User user) {
         Response response = request(user).post(loginUserUrl);
-        if (String.valueOf(response.statusCode()).equals("200")) {
-            String accessToken = response.then().extract().body().path("accessToken").toString();
-            storeData(accessToken);
+         if (String.valueOf(response.statusCode()).equals("200")) {
+             String accessToken = response.then().extract().body().path("accessToken").toString();
+            //storeData(accessToken);
         }
         return response;
     }
@@ -64,7 +66,7 @@ public class UserApi {
     public Response getUser() {
         return request(new User()).get(getUserUrl);
     }
-
+/*
     public void storeData(String string) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(dataForTest));
@@ -86,5 +88,32 @@ public class UserApi {
         }
         return null;
     }
+*/
+public String readData(User user) {
+    Response response = request(user).patch(updateUserUrl);
+    String accessToken = response.then().extract().body().path("accessToken").toString();
+
+
+
+    //response = request(user).patch(updateUserUrl);
+   /* String accessToken="";
+    if (String.valueOf(response.statusCode()).equals("200")) {
+         accessToken = response.then().extract().body().path("accessToken").toString();
+        //storeData(accessToken);
+    }*/
+
+
+    System.out.println("Save token "+ accessToken);
+    return accessToken;
+    }
+    public String getToken(Response response){
+
+        if(String.valueOf(response.statusCode()).equals("200")) {
+            String token = response.then().extract().body().path("accessToken").toString();
+            return token;}
+        else return "";
+    }
+
+
 
 }

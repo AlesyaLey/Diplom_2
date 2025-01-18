@@ -1,5 +1,6 @@
 package src.common;
 import io.qameta.allure.Step;
+import io.restassured.response.Response;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -69,17 +70,14 @@ public class BaseTestData {
 
     @Step("Get access token")
     public String getAccessToken() {
-        userApi.registerUser(validUser);
-        return userApi.readData();
+        return userApi.getToken(userApi.registerUser(validUser));
     }
 
     @After
     @Step("Clean test data")
     public void cleanData() {
-        String data = userApi.readData();
-        if (data != null) {
-            userApi.deleteUser(userApi.readData());
-            userApi.storeData("");
-        }
+       String token = userApi.getToken(userApi.loginUser(validUser));
+       userApi.deleteUser(token);
+
     }
 }
